@@ -17,7 +17,7 @@ public class CachingConfig {
     public static final String WEEKLY_CACHING = "WEEKLY_CACHING";
 
     @CacheEvict(allEntries = true, cacheNames = {INTRADAY_CACHING,DAILY_CACHING,MONTHLY_CACHING,WEEKLY_CACHING})
-    @Scheduled(fixedDelay = 5 * 60 * 1000)
+    @Scheduled(fixedDelay = 10 * 60 * 1000)
     public void cacheEvict() {
         System.out.println("Cache flushed");
     }

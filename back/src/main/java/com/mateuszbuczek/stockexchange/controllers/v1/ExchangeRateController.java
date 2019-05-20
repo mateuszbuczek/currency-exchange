@@ -18,7 +18,6 @@ public class ExchangeRateController {
     public ExchangeRateController(ExchangeRateService exchangeRateService) {
         this.exchangeRateService = exchangeRateService;
     }
-
     @GetMapping("current")
     public ResponseEntity<?> getCurrentRate(@RequestParam("from") String from, @RequestParam("to") String to) {
         ExchangeRateEntity currentExchangeRateEntity = exchangeRateService.getCurrentExchangeRate(from, to);

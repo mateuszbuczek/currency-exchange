@@ -6,9 +6,9 @@ import java.util.Set;
 
 public interface ExchangeRateService {
 
-    public ExchangeRateEntity getCurrentExchangeRate(String from, String to);
-    public Set<ExchangeRateEntity> getIntradayExchangeRate(String from, String to);
-    public Set<ExchangeRateEntity> getDailyExchangeRate(String from, String to);
-    public Set<ExchangeRateEntity> getWeeklyExchangeRate(String from, String to);
-    public Set<ExchangeRateEntity> getMonthlyExchangeRate(String from, String to);
+    ExchangeRateEntity getCurrentExchangeRate(String from, String to);
+    Set<ExchangeRateEntity> getIntradayExchangeRate(String from, String to);
+    Set<ExchangeRateEntity> getDailyExchangeRate(String from, String to);
+    Set<ExchangeRateEntity> getWeeklyExchangeRate(String from, String to);
+    Set<ExchangeRateEntity> getMonthlyExchangeRate(String from, String to);
 }

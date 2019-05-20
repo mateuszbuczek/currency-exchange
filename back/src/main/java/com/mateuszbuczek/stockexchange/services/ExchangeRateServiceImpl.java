@@ -26,7 +26,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
     public ExchangeRateEntity getCurrentExchangeRate(String from, String to) {
 
         String data;
-        ExchangeRateEntity exchangeRateEntity = null;
+        ExchangeRateEntity exchangeRateEntity;
 
         try {
             data = getData(from, to, TimeSeries.CURRENCY_EXCHANGE_RATE);
@@ -42,7 +42,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
     public Set<ExchangeRateEntity> getIntradayExchangeRate(String from, String to) {
 
         String data;
-        Set<ExchangeRateEntity> set = null;
+        Set<ExchangeRateEntity> set;
 
         try {
             data = getData(from, to, TimeSeries.FX_INTRADAY);
@@ -58,7 +58,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
     public Set<ExchangeRateEntity> getDailyExchangeRate(String from, String to) {
 
         String data;
-        Set<ExchangeRateEntity> set = null;
+        Set<ExchangeRateEntity> set;
 
         try {
             data = getData(from, to, TimeSeries.FX_DAILY);
@@ -74,7 +74,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
     public Set<ExchangeRateEntity> getWeeklyExchangeRate(String from, String to) {
 
         String data;
-        Set<ExchangeRateEntity> set = null;
+        Set<ExchangeRateEntity> set;
 
         try {
             data = getData(from, to, TimeSeries.FX_WEEKLY);
@@ -90,7 +90,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
     public Set<ExchangeRateEntity> getMonthlyExchangeRate(String from, String to) {
 
         String data;
-        Set<ExchangeRateEntity> set = null;
+        Set<ExchangeRateEntity> set;
 
         try {
             data = getData(from, to, TimeSeries.FX_MONTHLY);
@@ -158,8 +158,6 @@ public class ExchangeRateServiceImpl implements ExchangeRateService{
         else
             stringUrl = "https://www.alphavantage.co/query?function=" + function + "&apikey=" + API_KEY +
                     "&from_symbol=" + from + "&to_symbol=" + to + "&outputsize=full&interval=60min";
-
-        System.out.println(stringUrl);
 
         URL url = new URL(stringUrl);
 
