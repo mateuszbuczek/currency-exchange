@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Select from 'react-select';
 import axios from 'axios';
+import HistoricalExchangeRate from "./HistoricalExchangeChart";
+import ExchangeAreaChart from "./ExchangeAreaChart";
 
 const options = [
     { value: 'intraday', label: 'Intraday' },
@@ -42,9 +44,14 @@ function TimeseriesExchangeRate(props) {
                     onChange={onChange}
                     options={options}
                 />
-                {data && typeof data !== "string" ? data.map(item => {
-                    return <h4 key={item.time}>{item.fromCurrencyCode}:{item.toCurrencyCode} {item.exchangeRate} @{item.time} UTC</h4>})
-                    : <h4>Unavailable for given options</h4>
+                {data && typeof data !== "string" ? 
+                
+                    // data.map(item => {
+                    // return <h4 key={item.time}>{item.fromCurrencyCode}:{item.toCurrencyCode} {item.exchangeRate} @{item.time} UTC</h4>})
+
+                    // <HistoricalExchangeRate data={data} timeseries={props.timeseries} />
+                    <ExchangeAreaChart data={data} timeseries={props.timeseries} />
+                    : <h4>Unavailable for given options or too many calls (max 5 per minute)</h4>
                 }
               </div>
       );
