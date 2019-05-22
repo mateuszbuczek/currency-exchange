@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Select from 'react-select';
 import axios from 'axios';
-import HistoricalExchangeRate from "./HistoricalExchangeChart";
 import ExchangeAreaChart from "./ExchangeAreaChart";
 
 const options = [
-    { value: 'intraday', label: 'Intraday' },
-    { value: 'daily', label: 'Daily' },
-    { value: 'weekly', label: 'Weekly' },
-    { value: 'monthly', label: 'Monthly' }
+    { value: 'intraday', label: '12H' },
+    { value: 'intraday', label: '24H' },
+    { value: 'daily', label: '2 Weeks' },    
+    { value: 'daily', label: 'Month' },
+    // { value: 'weekly', label: 'Weekly' },
+    { value: 'monthly', label: '1 Year' },
+    { value: 'monthly', label: '2 Years' },
+    { value: 'monthly', label: '5 Years' },
+    { value: 'monthly', label: '10 Years' },
   ];
 
 function TimeseriesExchangeRate(props) {
     
     const [data, setData] = useState(null);
-    const [timeseries, setTimeseries] = useState(null);
+    const [timeseriesValue, setTimeseriesValue] = useState('intraday');
+    const [timeseriesLabel, setTimeseriesLabel] = useState('12H');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +37,8 @@ function TimeseriesExchangeRate(props) {
       }, [props.timeseries, props.from, props.to]);
 
       const onChange = e => {
-          setTimeseries(e);
+          setTimeseriesValue(e);
+          setTimeseriesLabel(e.label);
           props.setTimeseries(e.value);
       }
 
@@ -40,17 +46,12 @@ function TimeseriesExchangeRate(props) {
               <div>
                 <h3>Historical exchange rate</h3>
                 <Select
-                    value={timeseries}
+                    value={timeseriesValue}
                     onChange={onChange}
                     options={options}
                 />
                 {data && typeof data !== "string" ? 
-                
-                    // data.map(item => {
-                    // return <h4 key={item.time}>{item.fromCurrencyCode}:{item.toCurrencyCode} {item.exchangeRate} @{item.time} UTC</h4>})
-
-                    // <HistoricalExchangeRate data={data} timeseries={props.timeseries} />
-                    <ExchangeAreaChart data={data} timeseries={props.timeseries} />
+                    <ExchangeAreaChart data={data} timeseries={timeseriesLabel} />
                     : <h4>Unavailable for given options or too many calls (max 5 per minute)</h4>
                 }
               </div>
