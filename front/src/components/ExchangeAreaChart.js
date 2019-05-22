@@ -122,11 +122,10 @@ function ExchangeAreaChart(props) {
 
     return (
         <>
-        <div>{props.timeseries}</div>
-        <button onClick={() => {setShowTrend(!showTrend)}}>{showTrend ? "Hide" : "Show"} trend lines</button>
+        <button style={{display: 'block', margin: '0 auto', fontSize: '15px', padding: '25px', textAlign: 'center'}} onClick={() => {setShowTrend(!showTrend)}}>{showTrend ? "Hide" : "Show"} trend lines</button>
         {init()}
         <V.VictoryChart  theme={V.VictoryTheme.material}
-                         height={500} width={1000} 
+                         height={500} width={1400} 
                          minDomain={{y: minValue - 0.0001 * minValue}}
                          maxDomain={{y : maxValue + 0.0001 * maxValue}} >
             <V.VictoryAxis

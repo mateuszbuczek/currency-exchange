@@ -3,9 +3,8 @@ import Select from 'react-select';
 import axios from 'axios';
 
 function CurrencyForm(props) {
-    
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
+  const [from, setFrom] = useState({value: "EUR", label: "EUR (Euro)"});
+  const [to, setTo] = useState({value: "USD", label: "USD (United States Dollar)"});
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
@@ -35,19 +34,25 @@ function CurrencyForm(props) {
   } 
 
     return (
-        <form>
-        FROM <Select
-            autoFocus
-            value={from}
-            onChange={changeFrom}
-            options={options}
-         />
-        TO<Select
-            value={to}
-            onChange={changeTo}
-            options={options}
-         />
-        </form>
+        <div className="container">
+          <div className="item">
+            <p>FROM</p>
+            <p>TO</p>
+          </div>
+          <div className="item">
+          <Select
+                autoFocus
+                value={from}
+                onChange={changeFrom}
+                options={options}
+            />
+            <Select
+                value={to}
+                onChange={changeTo}
+                options={options}
+            />
+          </div>
+        </div>
     );
 }
 export default CurrencyForm;

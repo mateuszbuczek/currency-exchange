@@ -1,5 +1,15 @@
 html, body {
+  background: #ffdb74;  /* fallback for old browsers */
+  
+}  
 
+.wrapper {
+  height: 100%;
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .container {
@@ -7,8 +17,37 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
-h2 {
-  display: block;
+.item {
+  flex-basis: 25%;
+  flex-shrink: 80%;
 }
+
+h1 {
+	color: #252010;
+	font-family: 'Expletus Sans';
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 60px;
+	margin-bottom: 0px;
+	letter-spacing: -1px;
+	text-transform: none;
+}
+
+p {
+	color: #40371D;
+	font-family: 'Dosis';
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 36px;
+	margin-bottom: 10px;
+}
+
+a {
+	color: #5cd8b6;	
+}
+
+
+

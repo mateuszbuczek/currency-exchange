@@ -16,13 +16,13 @@ function CurrentExchangeRate(props) {
       }, [props.from, props.to]);
 
       return (
-          <div>
-              <div>
-                <h3>Real time exchange rate</h3>
-                {data && 
-                    <h4>{data.fromCurrencyCode}:{data.toCurrencyCode} {data.exchangeRate} @{data.time} UTC</h4>
-                }
-              </div>
+          <div className="container">
+               <p>Realtime exchange rate:  
+                    {data && 
+                        <a>  {Number(data.exchangeRate).toFixed(4)} @{data.time} UTC</a>
+                    }
+               </p>
+                
           </div>
         
       );

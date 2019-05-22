@@ -18,7 +18,7 @@ const options = [
 function TimeseriesExchangeRate(props) {
     
     const [data, setData] = useState(null);
-    const [timeseriesValue, setTimeseriesValue] = useState('intraday');
+    const [timeseriesValue, setTimeseriesValue] = useState({value: "Intraday", label: "12H"});
     const [timeseriesLabel, setTimeseriesLabel] = useState('12H');
 
     useEffect(() => {
@@ -44,12 +44,18 @@ function TimeseriesExchangeRate(props) {
 
       return (
               <div>
-                <h3>Historical exchange rate</h3>
-                <Select
-                    value={timeseriesValue}
-                    onChange={onChange}
-                    options={options}
-                />
+                  <div className="container">
+                    <div className="item">
+                        <p>Historical exchange rate</p>
+                        <Select
+                            value={timeseriesValue}
+                            onChange={onChange}
+                            options={options}
+                            />
+                    </div>
+                 
+                  </div>
+
                 {data && typeof data !== "string" ? 
                     <ExchangeAreaChart data={data} timeseries={timeseriesLabel} />
                     : <h4>Unavailable for given options or too many calls (max 5 per minute)</h4>
